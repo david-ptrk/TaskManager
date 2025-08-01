@@ -9,14 +9,17 @@
 </head>
 
 <body>
-    <div class="content">
+    {{-- <div class="content">
         <h1>Welcome to My Task Manager</h1>
         <h2>Welcome to TaskMaster. Your all-in-one task management solution designed to simplify your
             workflow and boost your productivity. Whether you're a student juggling assignments, a professional handling
             projects, or a team collaborating remotely, TaskMaster helps you plan, prioritize, and complete your tasks
             with ease. Create tasks, set deadlines, track progress, and stay in control — anytime, anywhere. Start
             managing your time smarter, not harder.</h2>
-    </div>
+    </div> --}}
+    <h1 id="heading">Task Manager</h1>
+
+    <div id="quote"></div>
 
     @if (Route::has('login'))
         <div style="text-align: right;">
@@ -30,6 +33,8 @@
             @endauth
         </div>
     @endif
+
+    <script src="{{ asset('js/welcome.js') }}"></script>
 </body>
 
 </html>

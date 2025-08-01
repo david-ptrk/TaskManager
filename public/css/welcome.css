@@ -46,6 +46,46 @@ body {
     margin: 0;
 }
 
+/*
 .content {
     padding: 0 70px;
+} */
+
+#heading {
+    position: fixed;
+    top: 10px;
+    left: 60px;
+    color: #ff8600;
+}
+
+/* #quote span {
+    font-size: 60px;
+    color: #531cb3;;
+} */
+
+#quote {
+    font-size: 50px;
+    color: #531cb3;
+
+    font-family: monospace;
+    display: inline-block;
+    white-space: pre;
+    position: relative;
+}
+
+#cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: black;
+    animation: blink 0.3s steps(1) infinite;
+    margin-left: 2px;
+    vertical-align: bottom;
+    position: absolute;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
 }
