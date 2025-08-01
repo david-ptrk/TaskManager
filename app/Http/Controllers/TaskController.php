@@ -28,4 +28,34 @@ class TaskController extends Controller
 
         return redirect()->back()->with('success', 'Task created successfully');
     }
+
+    public function destroy($id) {
+        $task = Task::findOrFail($id);
+        $task->delete();
+
+        return redirect()->route('dashboard')->with('success', 'Task deleted successfully');
+    }
+
+    public function edit($id) {
+        $task = Task::findOrFail($id);
+        return view('tasks.edit', compact('task'));
+    }
+
+    public function update(Request $request, $id) {
+        $task = Task::findOrFail($id);
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'priority' => 'required|in:low,medium,high',
+        ]);
+
+        $task->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'priority' => $request->priority,
+        ]);
+
+        return redirect()->route('dashboard')->with('success', 'Task updated successfully');
+    }
 }

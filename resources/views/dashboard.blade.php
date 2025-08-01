@@ -10,6 +10,10 @@
         select {
             color: black;
         }
+
+        #addTask {
+            background-color: rgb(0, 119, 255);
+        }
     </style>
 
     <div class="p-6 text-gray-900 dark:text-gray-100">
@@ -23,7 +27,7 @@
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
             </select>
-            <button type="submit" class="px-4 py-2 text-white bg-blue-500 rounded">
+            <button type="submit" class="px-4 py-2 text-white bg-blue-500 rounded" id="addTask">
                 Add Task
             </button>
         </form>
@@ -111,6 +115,24 @@
         .priority-high {
             background-color: red;
         }
+
+        .task-card {
+            position: relative;
+        }
+
+        #edit {
+            position: absolute;
+            right: 30px;
+            top: 5px;
+            font-size: 20px;
+        }
+
+        #delete {
+            position: absolute;
+            right: 3px;
+            top: 5px;
+            font-size: 20px
+        }
     </style>
 
     <div class="p-6 task-grid">
@@ -121,9 +143,22 @@
                 <span class="task-priority priority-{{ $task->priority }}">
                     {{ Str::ucfirst($task->priority) }}
                 </span>
+
+                <a href="{{ route('tasks.edit', $task->id) }}">
+                    <i id="edit" class="fa-solid fa-pen"></i>
+                </a>
+
+                <form action="{{ route('tasks.destroy', $task->id) }}" method="POST"
+                    onsubmit="return confirm('Are you sure?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">
+                        <i id="delete" class="fa-regular fa-circle-xmark"></i>
+                    </button>
+                </form>
             </div>
         @empty
-            <p>No tasks yet.</p>
+            <p style="color: white;">No tasks yet.</p>
         @endforelse
     </div>
 
