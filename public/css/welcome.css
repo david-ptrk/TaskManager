@@ -89,3 +89,12 @@ body {
         opacity: 0;
     }
 }
+
+#myCanvas {
+    border: 1px solid black;
+    background: #d0f0ff;
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    z-index: -100;
+}

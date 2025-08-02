@@ -21,6 +21,8 @@
 
     <div id="quote"></div>
 
+    <canvas id="myCanvas" width="800" height="400"></canvas>
+
     @if (Route::has('login'))
         <div style="text-align: right;">
             @auth
